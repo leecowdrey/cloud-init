@@ -1,6 +1,6 @@
 # RHEL 9.x cloud-init example on KVM
 
-## Prepare cloud-init metadata
+## 1. Prepare cloud-init metadata
 
 ```bash
 mkdir -p /var/lib/libvirt/images/example
@@ -56,7 +56,7 @@ final_message: "The system is finally up, after \$UPTIME seconds"
 EOF
 ```
 
-## package cloud-init metadata as mountable ISO
+## 2. package cloud-init metadata as mountable ISO
 
 ```bash
 pushd /var/lib/libvirt/images/example
@@ -69,7 +69,7 @@ genisoimage -output ../example.iso \
 popd
 ```
 
-## Instantiate KVM guest with OS import and cloud-init metadata ISO
+## 3. Instantiate KVM guest with OS import and cloud-init metadata ISO
 
 ```bash
 cp  /home/<id>/rhel-9.3-x86_64-kvm.qcow2 /var/lib/libvirt/images/example.qcow2 && \
